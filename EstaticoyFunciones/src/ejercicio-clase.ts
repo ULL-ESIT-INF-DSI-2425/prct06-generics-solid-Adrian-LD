@@ -29,7 +29,9 @@ export function sub(firstNumber: number, secondNumber: number): number {
  *
  * @param firstNumber - Consists of the first operand of the division
  * @param secondNumber - Consists o   f the second operand of the division
- * @returns The division of the two numbers `firstNumber` and `secondNumber`
+ * @returns The division of the two nu
+ * 
+ *mbers `firstNumber` and `secondNumber`
  * ```typescript
  * div(4, 8) = 0.5
  * ```
