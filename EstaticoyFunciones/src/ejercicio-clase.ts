@@ -15,7 +15,7 @@ export function add(firstNumber: number, secondNumber: number): number {
  * Substracts two __numbers__ // hola
  * @param firstNumber - Consists of the first operand of the substraction
  * @param secondNumber - Consists of the second operand of the substraction
- * @returns The substraction of the two numbers `firstNumber` and `secondNumber`
+ * @returns The substraction of 2the two numbers `firstNumber` and `secondNumber`
  * ```typescript
  * sub(1, 7) = -6
  * ```
