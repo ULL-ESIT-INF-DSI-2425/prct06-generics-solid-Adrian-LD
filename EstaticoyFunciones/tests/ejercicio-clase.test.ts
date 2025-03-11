@@ -1,63 +1,42 @@
-import { describe, it, expect, beforeEach, vi } from "vitest"; 
-import { Pokedex, Combat, Pokemon, charizard,} from "../src/ejercicio-clase";
+import { describe, expect, test } from "vitest";
+import { add, sub, div } from "../src/ejercicio-clase";
 
-describe("Alimento", () => {
-  let fanta: Bebida;
-  let Cocacola: Bebida;
-  let alimento : Alimento;
-  let caracteristicas: Caracteristicas;
-  beforeEach(() => {
-    alimento = new Alimento();
-
-    fanta = {
-      id: "Fanta",
-      info: "Fanta, refresco con sabor a naranja",
-      nutriscore: "C",
-      precio: "1,25",
-      },
-    
-
+describe("add function tests", () => {
+  test("add(1, 8) returns value 9", () => {
+    expect(add(1, 8)).toBe(9);
   });
 
-  it(, () => {
-    pokedex.addPokemon(pikachu);
-    expect(pokedex.searchByName("Pikachu")).toEqual([pikachu]);
-  });
-
-  it(, () => {
-
-  });
-
-  it(, () => {
-  
-
-    const electricPokemons = pokedex.searchByType("Electric");
-    expect(electricPokemons).toEqual([pikachu]);
-  });
-
-  it(, () => {
-    pokedex.addPokemon(pikachu);
-    pokedex.addPokemon(bulbasaur);
-
-    const foundPokemon = pokedex.searchByName("Bulbasaur");
-    expect(foundPokemon).toEqual([bulbasaur]);
+  test("add(-1, 8) returns value 7", () => {
+    expect(add(-1, 8)).toBe(7);
   });
 });
 
-describe("", () => {
- 
-
-  beforeEach(() => {
-   
+describe("sub function tests", () => {
+  test("sub(10, 7) returns value 3", () => {
+    expect(sub(10, 7)).toBe(3);
   });
 
-  it(, () => {
-
-
+  test("sub(-1, 8) returns value -9", () => {
+    expect(sub(-1, 8)).toBe(-9);
   });
 
-  it(, () => {
-    
+  test("sub(10, 3) returns value 7", () => {
+    expect(sub(10, 3)).toBe(7);
+  });
+});
 
+describe("div function tests", () => {
+  test("div(17, 0) throws an error", () => {
+    // Expect must be used in this way, if the test consists of
+    // checking if an error is thrown by any function
+    expect(() => div(17, 0)).toThrowError("Zero division");
+  });
+
+  test("div(4, 8) returns value 0.5", () => {
+    expect(div(4, 8)).toBe(0.5);
+  });
+
+  test("div(1, 3) returns value 0.3", () => {
+    expect(div(1, 3)).toBeCloseTo(0.33);
   });
 });
