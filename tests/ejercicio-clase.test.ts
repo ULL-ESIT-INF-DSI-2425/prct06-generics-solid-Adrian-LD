@@ -1,42 +1,98 @@
-import { describe, expect, test } from "vitest";
-import { add, sub, div } from "../src/ejercicio-clase";
+import { describe, it, expect, beforeEach } from 'vitest';
+import { SeriesCollection, MoviesCollection, DocumentariesCollection } from '/src/ejercicio-clase';
 
-describe("add function tests", () => {
-  test("add(1, 8) returns value 9", () => {
-    expect(add(1, 8)).toBe(9);
+describe('SeriesCollection', () => {
+  let seriesCollection: SeriesCollection;
+
+  beforeEach(() => {
+    seriesCollection = new SeriesCollection([
+      { name: 'Breaking Bad', year: 2008, seasons: 5 },
+      { name: 'Game of Thrones', year: 2011, seasons: 8 },
+      { name: 'Stranger Things', year: 2016, seasons: 4 },
+    ]);
   });
 
-  test("add(-1, 8) returns value 7", () => {
-    expect(add(-1, 8)).toBe(7);
+  it('should search series by name', () => {
+    const result = seriesCollection.searchByName('Thrones');
+    expect(result).toEqual([{ name: 'Game of Thrones', year: 2011, seasons: 8 }]);
+  });
+
+  it('should search series by year', () => {
+    const result = seriesCollection.searchByYear(2016);
+    expect(result).toEqual([{ name: 'Stranger Things', year: 2016, seasons: 4 }]);
+  });
+
+  it('should add a new series', () => {
+    seriesCollection.addItem({ name: 'The Witcher', year: 2019, seasons: 2 });
+    expect(seriesCollection.searchByName('Witcher')).toEqual([{ name: 'The Witcher', year: 2019, seasons: 2 }]);
+  });
+
+  it('should remove a series', () => {
+    seriesCollection.removeItem({ name: 'Breaking Bad', year: 2008, seasons: 5 });
+    expect(seriesCollection.searchByName('Breaking Bad')).toEqual([]);
   });
 });
 
-describe("sub function tests", () => {
-  test("sub(10, 7) returns value 3", () => {
-    expect(sub(10, 7)).toBe(3);
+describe('MoviesCollection', () => {
+  let moviesCollection: MoviesCollection;
+
+  beforeEach(() => {
+    moviesCollection = new MoviesCollection([
+      { name: 'Inception', year: 2010, duration: 148 },
+      { name: 'The Dark Knight', year: 2008, duration: 152 },
+      { name: 'Interstellar', year: 2014, duration: 169 },
+    ]);
   });
 
-  test("sub(-1, 8) returns value -9", () => {
-    expect(sub(-1, 8)).toBe(-9);
+  it('should search movies by name', () => {
+    const result = moviesCollection.searchByName('Dark');
+    expect(result).toEqual([{ name: 'The Dark Knight', year: 2008, duration: 152 }]);
   });
 
-  test("sub(10, 3) returns value 7", () => {
-    expect(sub(10, 3)).toBe(7);
+  it('should search movies by year', () => {
+    const result = moviesCollection.searchByYear(2014);
+    expect(result).toEqual([{ name: 'Interstellar', year: 2014, duration: 169 }]);
+  });
+
+  it('should add a new movie', () => {
+    moviesCollection.addItem({ name: 'Dunkirk', year: 2017, duration: 106 });
+    expect(moviesCollection.searchByName('Dunkirk')).toEqual([{ name: 'Dunkirk', year: 2017, duration: 106 }]);
+  });
+
+  it('should remove a movie', () => {
+    moviesCollection.removeItem({ name: 'Inception', year: 2010, duration: 148 });
+    expect(moviesCollection.searchByName('Inception')).toEqual([]);
   });
 });
 
-describe("div function tests", () => {
-  test("div(17, 0) throws an error", () => {
-    // Expect must be used in this way, if the test consists of
-    // checking if an error is thrown by any function
-    expect(() => div(17, 0)).toThrowError("Zero division");
+describe('DocumentariesCollection', () => {
+  let documentariesCollection: DocumentariesCollection;
+
+  beforeEach(() => {
+    documentariesCollection = new DocumentariesCollection([
+      { name: 'Planet Earth', year: 2006, topic: 'Nature' },
+      { name: 'The Social Dilemma', year: 2020, topic: 'Technology' },
+      { name: '13th', year: 2016, topic: 'Social Justice' },
+    ]);
   });
 
-  test("div(4, 8) returns value 0.5", () => {
-    expect(div(4, 8)).toBe(0.5);
+  it('should search documentaries by name', () => {
+    const result = documentariesCollection.searchByName('Earth');
+    expect(result).toEqual([{ name: 'Planet Earth', year: 2006, topic: 'Nature' }]);
   });
 
-  test("div(1, 3) returns value 0.3", () => {
-    expect(div(1, 3)).toBeCloseTo(0.33);
+  it('should search documentaries by year', () => {
+    const result = documentariesCollection.searchByYear(2020);
+    expect(result).toEqual([{ name: 'The Social Dilemma', year: 2020, topic: 'Technology' }]);
+  });
+
+  it('should add a new documentary', () => {
+    documentariesCollection.addItem({ name: 'The Last Dance', year: 2020, topic: 'Sports' });
+    expect(documentariesCollection.searchByName('Last Dance')).toEqual([{ name: 'The Last Dance', year: 2020, topic: 'Sports' }]);
+  });
+
+  it('should remove a documentary', () => {
+    documentariesCollection.removeItem({ name: 'Planet Earth', year: 2006, topic: 'Nature' });
+    expect(documentariesCollection.searchByName('Planet Earth')).toEqual([]);
   });
 });

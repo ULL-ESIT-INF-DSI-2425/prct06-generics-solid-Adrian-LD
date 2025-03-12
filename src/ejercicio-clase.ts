@@ -1,44 +1,91 @@
-/**
- * Adds two __numbers__
- * @param firstNumber - Consists of the first operand of the addition
- * @param secondNumber - Consists of the second operand of the addition
- * @returns The addition of the two numbers `firstNumber` and `secondNumber`
- * ```typescript
- * add(1, 7) = 8
- * ```
- */
-export function add(firstNumber: number, secondNumber: number): number {
-  return firstNumber + secondNumber;
+export interface Streamable<T> {
+  searchByName(name: string): T[];
+  searchByYear(year: number): T[];
 }
 
-/** 
- * Subs tracts two __numbers__ // hola
- * @param firstNumber - Consists of tlhe first operand of the substraction
- * @param secondNumber - Consists of the second operand of the substraction
- * @returns The substraction of 2th two numbers `firstNumber` and `secondNumber`
- * ```typescript
- * sub(1, 7) = -6
- * ```
- *
- */
-export function sub(firstNumber: number, secondNumber: number): number {
-  return firstNumber - secondNumber;
-}
+export abstract class BasicStreamableCollection<T> implements Streamable<T> {
+  private items: T[] = [];
 
-/**
- *
- * @param firstNumber - Consists of the first operand of the division
- * @param secondNumber - Consists o   f the second operand of the division
- * @returns The division of the two nu
- * 
- *mbers `firstNumber` and `secondNumber`
- * ```typescript
- * div(4, 8) = 0.5
- * ```
- */
-export function div(firstNumber: number, secondNumber: number): number {
-  if (secondNumber === 0) {
-    throw new Error("Zero division");
+  constructor(initialItems: T[] = []) {
+    this.items = initialItems;
   }
-  return firstNumber / secondNumber;
+
+  protected getItems(): T[] {
+    return this.items;
+  }
+
+  addItem(item: T): void {
+    this.items.push(item);
+  }
+
+  removeItem(item: T, compareFn?: (a: T, b: T) => boolean): void {
+    if (compareFn) {
+      this.items = this.items.filter((i) => !compareFn(i, item));
+    } else {
+      this.items = this.items.filter((i) => i !== item);
+    }
+  }
+
+  abstract searchByName(name: string): T[];
+  abstract searchByYear(year: number): T[];
+}
+
+export interface Serie {
+  name: string;
+  year: number;
+  seasons: number;
+}
+
+export class SeriesCollection extends BasicStreamableCollection<Serie> {
+  searchByName(name: string): Serie[] {
+    return this.getItems().filter((serie) => serie.name.includes(name));
+  }
+
+  searchByYear(year: number): Serie[] {
+    return this.getItems().filter((serie) => serie.year === year);
+  }
+
+  removeItem(item: Serie): void {
+    super.removeItem(item, (a, b) => a.name === b.name && a.year === b.year && a.seasons === b.seasons);
+  }
+}
+
+export interface Movie {
+  name: string;
+  year: number;
+  duration: number;
+}
+
+export class MoviesCollection extends BasicStreamableCollection<Movie> {
+  searchByName(name: string): Movie[] {
+    return this.getItems().filter((movie) => movie.name.includes(name));
+  }
+
+  searchByYear(year: number): Movie[] {
+    return this.getItems().filter((movie) => movie.year === year);
+  }
+
+  removeItem(item: Movie): void {
+    super.removeItem(item, (a, b) => a.name === b.name && a.year === b.year && a.duration === b.duration);
+  }
+}
+
+export interface Documentary {
+  name: string;
+  year: number;
+  topic: string;
+}
+
+export class DocumentariesCollection extends BasicStreamableCollection<Documentary> {
+  searchByName(name: string): Documentary[] {
+    return this.getItems().filter((doc) => doc.name.includes(name));
+  }
+
+  searchByYear(year: number): Documentary[] {
+    return this.getItems().filter((doc) => doc.year === year);
+  }
+
+  removeItem(item: Documentary): void {
+    super.removeItem(item, (a, b) => a.name === b.name && a.year === b.year && a.topic === b.topic);
+  }
 }

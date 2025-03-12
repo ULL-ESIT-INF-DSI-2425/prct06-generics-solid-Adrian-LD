@@ -1,13 +1,13 @@
 {
   "name": "doc-test",
   "version": "1.0.0",
-  "main": "ejercicio-clase.js",
+  "main": "rational.js",
   "scripts": {
-    "start": "node dist/ejercicio-clase.js",
-    "dev": "tsc-watch --onSuccess \"node dist/ejercicio-clase.js\"",
+    "start": "node dist/rational.js",
+    "dev": "tsc-watch --onSuccess \"node dist/rational.js\"",
     "doc": "typedoc",
     "test": "npx vitest run --watch",
-    "coverage": "vitest run --watch --coverage --coverage.include src/*"
+    "coverage": "vitest run --coverage --coverage.include src/**/*"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,7 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.20.0",
-    "@vitest/coverage-v8": "^3.0.5",
+    "@vitest/coverage-v8": "^3.0.8",
     "coveralls": "^3.1.1",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
@@ -26,6 +26,6 @@
     "tsc-watch": "^6.2.1",
     "typedoc": "^0.27.7",
     "typescript-eslint": "^8.24.1",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.8"
   }
 }
