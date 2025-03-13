@@ -7,7 +7,7 @@
     "dev": "tsc-watch --onSuccess \"node dist/modificacion.js\"",
     "doc": "typedoc",
     "test": "npx vitest run --watch",
-    "coverage": "vitest run --coverage --coverage.include src/**/*"
+    "coverage": "vitest run --coverage --coverage.include **/src/*"
   },
   "keywords": [],
   "author": "",

@@ -5,20 +5,17 @@ describe('', () => {
   let numericCollection: NumericPrintableCollection;
 
   beforeEach(() => {
-   
     numericCollection = new NumericPrintableCollection([2, 8, 10]);
   });
 
   it('Obtener los numeros en la coleccion', () => {
-   
     expect(numericCollection.getNumberOfItems()).toBe(3);
     expect(numericCollection.getItem(0)).toBe(2);
     expect(numericCollection.getItem(1)).toBe(8);
     expect(numericCollection.getItem(2)).toBe(10);
-  });
+  }); 
 
   it('Imprimir resultado', () => {
-    
     expect(numericCollection.print()).toBe('2,8,10');
   });
 
@@ -40,4 +37,6 @@ describe('', () => {
   it('Obtener valores', () => {
     expect(numericCollection.getItem(1)).toBe(8);
   });
+
+
 });
