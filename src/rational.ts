@@ -26,7 +26,7 @@ interface Arithmeticable<T> {
     }
   }
 
-  
+
   export class Complex implements Arithmeticable<Complex> {
     constructor(public real: number, public imaginary: number) {}
   
@@ -110,4 +110,5 @@ interface Arithmeticable<T> {
       return `${this.numerator}/${this.denominator}`;
     }
   }
-  
+
+

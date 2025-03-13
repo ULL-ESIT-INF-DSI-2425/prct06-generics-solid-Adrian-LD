@@ -89,3 +89,4 @@ export class DocumentariesCollection extends BasicStreamableCollection<Documenta
     super.removeItem(item, (a, b) => a.name === b.name && a.year === b.year && a.topic === b.topic);
   }
 }
+
