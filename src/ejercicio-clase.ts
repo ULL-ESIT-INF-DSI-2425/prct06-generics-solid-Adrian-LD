@@ -65,7 +65,7 @@ export class MoviesCollection extends BasicStreamableCollection<Movie> {
     return this.getItems().filter((movie) => movie.year === year);
   }
 
-  removeItem(item: Movie): void {
+  removeItem(item:Movie): void {
     super.removeItem(item, (a, b) => a.name === b.name && a.year === b.year && a.duration === b.duration);
   }
 }
