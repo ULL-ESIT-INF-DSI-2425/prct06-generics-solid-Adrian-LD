@@ -1,10 +1,10 @@
 {
   "name": "doc-test",
   "version": "1.0.0",
-  "main": "modificacion.js",
+  "main": "prueba.js",
   "scripts": {
-    "start": "node dist/modificacion.js",
-    "dev": "tsc-watch --onSuccess \"node dist/modificacion.js\"",
+    "start": "node dist/prueba.js",
+    "dev": "tsc-watch --onSuccess \"node dist/prueba.js\"",
     "doc": "typedoc",
     "test": "npx vitest run --watch",
     "coverage": "vitest run --coverage --coverage.include **/src/*"
