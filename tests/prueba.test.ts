@@ -15,14 +15,14 @@ describe("", () => {
     expect(logger).toBe(logger2); 
   });
 
-  it("", () => {
+  it("Obtener fechas", () => {
     const action: data = { usuario: "Adrian", accion: "Login", fecha: new Date() };
     logger.addAction(action);
     expect(logger.getData().length).toBe(1); 
     expect(logger.getData()[0]).toEqual(action); 
   });
 
-  it("", () => {
+  it("Añadir datos ", () => {
     const action1: data = { usuario: "Adrian", accion: "Login", fecha: new Date() };
     const action2: data = { usuario: "Pedro", accion: "Logout", fecha: new Date() };
     logger.addAction(action1);
@@ -33,7 +33,7 @@ describe("", () => {
     expect(result[0]).toEqual(action1); 
   });
 
-  it("", () => {
+  it("Añadir datos", () => {
     const action1: data = { usuario: "Adrian", accion: "Login", fecha: new Date() };
     const action2: data = { usuario: "Pedro", accion: "Logout", fecha: new Date() };
     logger.addAction(action1);
@@ -44,7 +44,7 @@ describe("", () => {
     expect(result[0]).toEqual(action1); 
   });
 
-  it("", () => {
+  it("Modificar valores", () => {
     const actions: data[] = [
       { usuario: "Adrian", accion: "Login", fecha: new Date() },
       { usuario: "Pedro", accion: "Logout", fecha: new Date() },
@@ -53,7 +53,7 @@ describe("", () => {
     expect(logger.getData()).toEqual(actions); 
   });
 
-  it("", () => {
+  it("Obtener datosz", () => {
     expect(logger.getData().length).toBe(0); 
   });
 });
